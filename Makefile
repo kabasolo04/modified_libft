@@ -51,6 +51,7 @@ SOURCES = \
 	ft_lstmap.c \
 	\
 	ft_printf.c \
+	get_next_line.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
