@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:11 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/02/02 16:53:33 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:53:59 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	ft_str(char *str)
 	if (!str)
 		return (ft_str("(null)"));
 	while (str[i])
-		write(1, &str[i ++], 1);
+		write(1, &str[i++], 1);
 	return (i);
 }
 
