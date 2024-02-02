@@ -40,7 +40,7 @@ SOURCES = \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
 	\
-	t_lstnew.c \
+	ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -98,5 +98,5 @@ bonus: $(OBJECTS)
 	echo "  ##                                                         ##"
 	echo "  ##---------------------------------------------------------##"
 	echo ""
-
+.SILENT:
 .PHONY: all clean fclean re bonus

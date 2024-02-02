@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:35:45 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/02/02 16:44:05 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/02/02 16:49:39 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,6 @@ static void	ft_cut_buffer(char *buffer)
 	}
 	while (i <= BUFFER_SIZE)
 		buffer[i ++] = '\0';
-}
-
-static void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-		((char *)s)[i ++] = 0;
 }
 
 char	*get_next_line(int fd)
