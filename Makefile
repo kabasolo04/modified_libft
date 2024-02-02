@@ -39,6 +39,7 @@ SOURCES = \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
+	\
 	t_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
@@ -48,6 +49,8 @@ SOURCES = \
 	ft_lstclear.c \
 	ft_lstiter.c \
 	ft_lstmap.c \
+	\
+	ft_printf.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
