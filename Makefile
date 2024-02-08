@@ -53,6 +53,7 @@ SOURCES = \
 	ft_printf.c \
 	get_next_line.c \
 	ft_ismayus.c \
+	ft_isminor.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
