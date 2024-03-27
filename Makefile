@@ -54,6 +54,7 @@ SOURCES = \
 	get_next_line.c \
 	ft_ismayus.c \
 	ft_islowcase.c \
+	ft_isspace.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
