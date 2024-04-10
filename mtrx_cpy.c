@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   mtrx_cpy.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 12:48:15 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/04 13:22:42 by kabasolo         ###   ########.fr       */
+/*   Created: 2024/04/10 17:42:38 by kabasolo          #+#    #+#             */
+/*   Updated: 2024/04/10 17:46:41 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	**mtrx_cpy(char **mtrx)
 {
-	int	res;
-	int	b;
+	int		i;
+	int		t;
+	char	**cpy;
 
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	b = 1 * (-1 * (*str == '-'));
-	str += (*str == '+' || *str == '-');
-	res = 0;
-	while (*str >= '0' && *str <= '9')
+	i = 0;
+	while (mtrx[i])
+		i ++;
+	cpy = (char **)malloc((i + 1) * sizeof(char *));
+	if (!cpy)
+		return (NULL);
+	i = 0;
+	while (mtrx[i])
 	{
-		res = res * 10 + *str - '0';
-		str++;
+		t = 0;
+		cpy[i] = (char *)malloc((ft_strlen(mtrx[i]) + 1) * sizeof(char ));
+		if (!cpy[i])
+			return (free_splited(cpy), NULL);
+		while (mtrx[i][t])
+		{
+			cpy[i][t] = mtrx[i][t];
+			t ++;
+		}
+		i ++;
 	}
-	return (b * res);
+	return (cpy);
 }

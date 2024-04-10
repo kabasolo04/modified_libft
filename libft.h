@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:25:05 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/03/27 13:25:44 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:00:31 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,8 @@ char	*get_next_line(int fd);
 int		ft_ismayus(int c);
 int		ft_islowcase(int c);
 int		ft_isspace(int c);
+int		mtrx_len(char **mtrx);
+char	**mtrx_cpy(char **mtrx);
+void	mtrx_free(char **mtrx);
 
 #endif //LIBFT.H

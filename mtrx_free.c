@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   mtrx_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 12:48:15 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/04 13:22:42 by kabasolo         ###   ########.fr       */
+/*   Created: 2024/04/10 17:47:03 by kabasolo          #+#    #+#             */
+/*   Updated: 2024/04/10 17:48:43 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	mtrx_free(char **mtrx)
 {
-	int	res;
-	int	b;
+	int	i;
 
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	b = 1 * (-1 * (*str == '-'));
-	str += (*str == '+' || *str == '-');
-	res = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - '0';
-		str++;
-	}
-	return (b * res);
+	i = -1;
+	while (mtrx[++i])
+		free(mtrx[i]);
+	free(mtrx);
 }
