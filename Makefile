@@ -55,6 +55,9 @@ SOURCES = \
 	ft_ismayus.c \
 	ft_islowcase.c \
 	ft_isspace.c \
+	mtrx_len.c \
+	mtrx_cpy.c \
+	mtrx_free.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
@@ -62,44 +65,17 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	echo ""
-	echo "  ##---------------------------------------------------------##"
-	echo "  ##                                                         ##"
-	echo "  ##        Makefile: The library has been compiled.         ##"
-	echo "  ##                                                         ##"
-	echo "  ##---------------------------------------------------------##"
-	echo ""
 
 clean:
 	rm -f $(OBJECTS)
-	echo ""
-	echo "  ##---------------------------------------------------------##"
-	echo "  ##                                                         ##" 
-	echo "  ##  Makefile: The .o terminated files have been removed.   ##"
-	echo "  ##                                                         ##"
-	echo "  ##---------------------------------------------------------##"
-	echo ""
 
 fclean: clean
 	rm -f $(NAME)
-
-	echo "  ##---------------------------------------------------------##"
-	echo "  ##                                                         ##"
-	echo "  ##  Makefile: The library libft.a has been removed.        ##"
-	echo "  ##                                                         ##"
-	echo "  ##---------------------------------------------------------##"
-	echo ""
 
 re: fclean $(NAME)
 
 bonus: $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
-	echo ""
-	echo "  ##---------------------------------------------------------##"
-	echo "  ##                                                         ##"
-	echo "  ##  Makefile: The library has been compiled with bonuses.  ##"
-	echo "  ##                                                         ##"
-	echo "  ##---------------------------------------------------------##"
-	echo ""
+
 .SILENT:
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
