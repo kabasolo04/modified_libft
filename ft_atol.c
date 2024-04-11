@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mtrx_cpy.c                                         :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 17:42:38 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/10 19:20:25 by kabasolo         ###   ########.fr       */
+/*   Created: 2024/04/10 19:41:45 by kabasolo          #+#    #+#             */
+/*   Updated: 2024/04/11 13:53:14 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**mtrx_cpy(char **mtrx)
+long	ft_atol(const char *str)
 {
-	int		i;
-	int		t;
-	char	**cpy;
+	long	res;
+	int		b;
 
-	i = mtrx_len(mtrx);
-	cpy = (char **)malloc((i + 1) * sizeof(char *));
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	while (mtrx[i])
+	while (ft_isspace(*str))
+		str++;
+	b = 1;
+	if (*str == '-')
+		b = -1;
+	str += (*str == '+' || *str == '-');
+	res = 0;
+	while (ft_isdigit(*str))
 	{
-		t = 0;
-		cpy[i] = (char *)malloc((ft_strlen(mtrx[i]) + 1) * sizeof(char ));
-		if (!cpy[i])
-			return (mtrx_free(cpy), NULL);
-		while (mtrx[i][t])
-		{
-			cpy[i][t] = mtrx[i][t];
-			t ++;
-		}
-		i ++;
+		res = res * 10 + *str - '0';
+		str++;
 	}
-	return (cpy);
+	return (b * res);
 }
