@@ -6,11 +6,15 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:11 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/03/27 13:45:37 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:36:37 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#define NUM "0123456789"
+#define HEX1 "0123456789abcdef"
+#define HEX2 "0123456789ABCDEF"
 
 static int	ft_dec(long int nbr, char *base)
 {

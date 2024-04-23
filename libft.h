@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:25:05 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/11 13:52:56 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:52:01 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-
-# define BUFFER_SIZE 42
-# define NUM "0123456789"
-# define HEX1 "0123456789abcdef"
-# define HEX2 "0123456789ABCDEF"
 
 typedef struct s_list
 {
@@ -76,7 +71,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int		ft_printf(char const *s, ...);
-char	*get_next_line(int fd);
 int		ft_ismayus(int c);
 int		ft_islowcase(int c);
 int		ft_isspace(int c);
@@ -84,5 +78,7 @@ long	ft_atol(const char *str);
 int		mtrx_len(char **mtrx);
 char	**mtrx_cpy(char **mtrx);
 void	mtrx_free(char **mtrx);
+void	*ft_realloc(void *ptr, size_t size);
+char	*get_next_line(int fd);
 
 #endif //LIBFT.H
