@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:11 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/23 19:36:37 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:43:26 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,7 @@ int	ft_printf(char const *s, ...)
 			n += ft_conversor(*++s, va);
 		else
 			n += write(1, s, 1);
-		if (*s)
-			s ++;
+		s += !(!*s);
 	}
 	va_end(va);
 	return (n);

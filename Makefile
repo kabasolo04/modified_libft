@@ -60,7 +60,8 @@ SOURCES = \
 	mtrx_free.c \
 	ft_realloc.c \
 	get_next_line.c \
-	global_variable.c \
+	data_base.c \
+	free_list.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
