@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   global_variable.c                                  :+:      :+:    :+:   */
+/*   free_list.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 11:33:57 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/24 11:47:52 by kabasolo         ###   ########.fr       */
+/*   Created: 2024/04/24 15:24:33 by kabasolo          #+#    #+#             */
+/*   Updated: 2024/04/24 18:10:06 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*global_variable(void *var)
+void	free_list(t_list **lst)
 {
-	static void	*g_var;
-
-	if (var)
-		g_var = var;
-	if (!g_var)
-		g_var = NULL;
-	return (g_var);
+	if (!*lst)
+		return ;
+	free_list(&(*lst)->next);
+	free (*lst);
+	*lst = NULL;
 }

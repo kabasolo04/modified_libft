@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:25:05 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/24 11:49:02 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:02:20 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_list
 {
+	char			*name;
 	void			*content;
 	struct s_list	*next;
 }	t_list;
@@ -81,6 +82,7 @@ char	**mtrx_cpy(char **mtrx);
 void	mtrx_free(char **mtrx);
 void	*ft_realloc(void *ptr, size_t size);
 char	*get_next_line(int fd);
-void	*global_variable(void *var);
+void	**data_base(char *name, void *var, int b);
+void	free_list(t_list **lst);
 
 #endif //LIBFT.H
