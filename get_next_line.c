@@ -6,13 +6,13 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 19:35:45 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/23 19:51:34 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/24 11:49:53 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*gnl_by_one(int fd)
+char	*get_next_line(int fd)
 {
 	char	*buff;
 	char	*line;
