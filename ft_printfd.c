@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:30:58 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/24 11:47:58 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/24 12:09:23 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	ft_printfd(int fd, char const *s, ...)
 	int		n;
 	va_list	va;
 
-	global_variable(fd);
+	global_variable(&fd);
 	n = 0;
 	va_start(va, s);
 	while (*s)
