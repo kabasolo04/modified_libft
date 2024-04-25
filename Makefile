@@ -51,7 +51,6 @@ SOURCES = \
 	ft_lstmap.c \
 	\
 	ft_printf.c \
-	ft_printfd.c \
 	ft_ismayus.c \
 	ft_islowcase.c \
 	ft_isspace.c \
@@ -60,8 +59,6 @@ SOURCES = \
 	mtrx_free.c \
 	ft_realloc.c \
 	get_next_line.c \
-	data_base.c \
-	rem_node.c \
 	free_list.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
