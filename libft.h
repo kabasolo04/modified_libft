@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:25:05 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/25 11:11:30 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:47:41 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define READ 0
 # define EDIT 1
-# define REM  2
+# define DEL  2
 # define FREE 3
 # define MEM  4
 
@@ -78,7 +78,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int		ft_printf(char const *s, ...);
-int		ft_printfd(int fd, char const *s, ...);
 int		ft_ismayus(int c);
 int		ft_islowcase(int c);
 int		ft_isspace(int c);
@@ -88,8 +87,6 @@ char	**mtrx_cpy(char **mtrx);
 void	mtrx_free(char **mtrx);
 void	*ft_realloc(void *ptr, size_t size);
 char	*get_next_line(int fd);
-void	**data_base(int mode, ...);
-void	rem_node(t_list	**data, int i);
 void	free_list(t_list **lst);
 
 #endif //LIBFT.H
