@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:30:58 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/24 18:43:03 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:26:53 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_dec(long int nbr, char *base)
 {
 	int	fd;
 
-	fd = (int)data_base("fd", NULL, 0)[0];
+	fd = (int)data_base(READ, "fd")[0];
 	if (nbr < 0)
 		return (write(1, "-", 1) + ft_dec(nbr * (-1), base));
 	if (nbr > 9)
@@ -32,7 +32,7 @@ static int	ft_hex(unsigned long nbr, char *base)
 {
 	int	fd;
 
-	fd = (int)data_base("fd", NULL, 0)[0];
+	fd = (int)data_base(READ, "fd")[0];
 	if (nbr > 15)
 		return (ft_hex(nbr / 16, base) + write(fd, &base[nbr % 16], 1));
 	return (write(fd, &base[nbr % 16], 1));
@@ -43,7 +43,7 @@ static int	ft_str(char *str)
 	int	i;
 	int	fd;
 
-	fd = (int)data_base("fd", NULL, 0)[0];
+	fd = (int)data_base(READ, "fd")[0];
 	i = 0;
 	if (!str)
 		return (ft_str("(null)"));
@@ -56,7 +56,7 @@ static int	ft_conversor(char c, va_list va)
 {
 	int	fd;
 
-	fd = (int)data_base("fd", NULL, 0)[0];
+	fd = (int)data_base(READ, "fd")[0];
 	if (c == 'c')
 		return (write(fd, &(char){va_arg(va, int)}, 1));
 	if (c == 's')
@@ -79,8 +79,8 @@ int	ft_printfd(int fd, char const *s, ...)
 	int		n;
 	va_list	va;
 
-	if (!data_base("fd", &fd, 0)[1])
-		return (data_base(NULL, 0, 3), -1);
+	if (!data_base(EDIT, "fd", &fd)[1])
+		return (data_base(FREE), -1);
 	n = 0;
 	va_start(va, s);
 	while (*s)
@@ -92,5 +92,5 @@ int	ft_printfd(int fd, char const *s, ...)
 		s += !(!*s);
 	}
 	va_end(va);
-	return (data_base(NULL, 0, 3), n);
+	return (data_base(FREE), n);
 }

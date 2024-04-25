@@ -6,11 +6,19 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 11:33:57 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/04/24 19:47:39 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/04/25 12:17:32 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+typedef struct data_list
+{
+	va_list			va;
+	char			*name;
+	char			*var;
+	int				i;
+}	data_list;
 
 static int	find_by_name(t_list *data, char *name)
 {
@@ -19,7 +27,7 @@ static int	find_by_name(t_list *data, char *name)
 
 	i = 1;
 	node = data;
-	while(node)
+	while (node)
 	{
 		if (!ft_strncmp(node->name, name, 128))
 			return (i);
@@ -29,85 +37,77 @@ static int	find_by_name(t_list *data, char *name)
 	return (0);
 }
 
-static void	**make_res(void *cont1, int cont2)
+static void	**make_res(void *cont1, void *cont2)
 {
 	void	**res;
 	void	**temp;
-	
+
 	temp = (void **)malloc(2 * sizeof(void *));
 	temp[0] = cont1;
-	temp[1] = &cont2;
+	temp[1] = cont2;
 	res = temp;
 	free(temp);
-	return(res);
+	return (res);
 }
 
-static int	new_var(t_list	**data, char *name, void *var)
+static int	new_node(t_list	**data, char *name, void *var)
 {
 	t_list	*node;
-	
+
 	node = (t_list *)malloc(sizeof(t_list));
 	if (!node)
 		return (0);
 	node->name = name;
 	node->content = var;
-	ft_lstadd_front(data, node);
+	ft_lstadd_back(data, node);
 	return (1);
 }
 
-static void	rem_node(t_list	**data, int i)
+static void	**read_or_edit(t_list	**data, data_list *d, int mode)
 {
-	t_list	*temp;
-	t_list	*prev;
-	t_list	*current;
+	t_list			*temp;
 
-	if (!*data || i < 1)
-		return ;
-	if (i)
+	if (d->i == 0)
 	{
-		temp = *data;
-		*data = (*data)->next;
-		return (free(temp));
+		if (mode == READ || (int)d->name < 2048)
+			return (make_res(NULL, (void *)0));
+		if (mode == EDIT && new_node(data, d->name, d->var))
+			return (make_res((*data)->content, (void *)1));
 	}
-	prev = *data;
-	current = (*data)->next;
-	while (current && i > 1)
-	{
-		prev = current;
-		current = current->next;
-		i --;
-	}
-	if (!current)
-		return ;
-	prev->next = current->next;
-    free(current);
+	temp = *data;
+	while (d->i-- > 1 && temp && temp->next)
+		temp = temp->next;
+	if (d->i > 0)
+		return (make_res(NULL, (void *)0));
+	if (mode == EDIT)
+		temp->content = d->var;
+	return (make_res(temp->content, (void *)1));
 }
 
-void	**data_base(char *name, void *var, int b)
+void	**data_base(int mode, ...) //char *name, void *var
 {
-	static t_list	*data;
-	t_list			*temp;
-	int				i;
+	static t_list	*data_base;
+	data_list		d;
 
-	if (b == 3)
-		return (free_list(&data), make_res(NULL, 1));
-	if (b == 4)
-		return (make_res(&data, 1));
-	if (!name)
-		return(make_res(NULL, 0));
-	i = find_by_name(data, name);
-	if (b == 2)
-		return (rem_node(&data, i), make_res(NULL, 1));
-	if (!i)
+	if (mode == FREE)
+		return (free_list(&data_base), make_res(NULL, (void *)1));
+	if (mode == MEM)
+		return (make_res(&data_base, (void *)1));
+	va_start(d.va, mode);
+	d.name = va_arg(d.va, void *);
+	d.var = va_arg(d.va, void *);
+	va_end(d.va);
+	if (!d.name)
+		return (make_res(NULL, (void *)0));
+	d.i = (int)d.name;
+	if ((int)d.name > 2048)
+		d.i = find_by_name(data_base, d.name);
+	if (mode == REM)
 	{
-		if (!(b && new_var(&data, name, var)))
-			return (make_res(NULL, 0));
-		return (make_res(data->content, 1));
+		rem_node(&data_base, d.i);
+		return (make_res(NULL, (void *)1));
 	}
-	temp = data;
-	while (i-- > 1 && temp && temp->next)
-		temp = temp->next;
-	if (b)
-		temp->content = var;
-	return (make_res(temp->content, 1));
+	if (mode == READ || mode == EDIT)
+		return (read_or_edit(&data_base, &d, mode));
+	return (make_res(NULL, (void *)0));
 }

@@ -61,6 +61,7 @@ SOURCES = \
 	ft_realloc.c \
 	get_next_line.c \
 	data_base.c \
+	rem_node.c \
 	free_list.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
