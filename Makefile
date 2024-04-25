@@ -83,4 +83,4 @@ bonus: $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
 .SILENT:
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
