@@ -92,7 +92,7 @@ char	*get_next_line(int fd)
 	{
 		rbytes = read(fd, buffer, BUFFER_SIZE);
 		if (rbytes == -1)
-			return (free(line), ft_bzero(buffer, ft_lfc(buffer, '\0')), NULL);
+			return (free(line), ft_bzero(buffer, BUFFER_SIZE + 1), NULL);
 		buffer[rbytes] = '\0';
 		line = ft_join(line, buffer);
 	}
