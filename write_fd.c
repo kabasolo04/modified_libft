@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   write_fd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 12:32:33 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/01/30 12:22:08 by kabasolo         ###   ########.fr       */
+/*   Created: 2024/01/03 12:44:11 by kabasolo          #+#    #+#             */
+/*   Updated: 2024/04/25 16:42:04 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int write_fd(int fdin, char c)
 {
-	char	*d;
-	char	*s;
+	static int	fd;
 
-	d = (char *)dst;
-	s = (char *)src;
-	if (!dst && !src)
-		return (NULL);
-	if (dst > src)
-	{
-		while (len --)
-			d[len] = s[len];
-	}
-	else
-		ft_memcpy(dst, src, len);
-	return (d);
+	if (fdin >= 0)
+		fd = fdin;
+    else if (ft_isprint(c))
+		return (write(fd, &c, 1));
+	return (0);
 }

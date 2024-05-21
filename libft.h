@@ -17,12 +17,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define READ 0
-# define EDIT 1
-# define DEL  2
-# define FREE 3
-# define MEM  4
-
 typedef struct s_list
 {
 	char			*name;
@@ -88,5 +82,7 @@ void	mtrx_free(char **mtrx);
 void	*ft_realloc(void *ptr, size_t size);
 char	*get_next_line(int fd);
 void	free_list(t_list **lst);
+int		write_fd(int fdin, char c);
+int		printfd(int fd, char const *s, ...);
 
 #endif //LIBFT.H
