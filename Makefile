@@ -60,6 +60,8 @@ SOURCES = \
 	ft_realloc.c \
 	get_next_line.c \
 	free_list.c \
+	write_fd.c \
+	printfd.c \
 
 OBJECTS = $(SOURCES:%.c=%.o)
 
