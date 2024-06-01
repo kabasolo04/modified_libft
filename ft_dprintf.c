@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:44:11 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/05/22 20:33:19 by kabasolo         ###   ########.fr       */
+/*   Updated: 2024/05/24 19:06:26 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ static int	ft_conversor(int fd, char c, va_list va)
 	if (c == 's')
 		return (ft_str(fd, va_arg(va, char *)));
 	if (c == 'p')
-		return (write(fd, "0x", 2) + ft_hex(fd, va_arg(va, unsigned long), HEX1));
+	{
+		write(fd, "0x", 2);
+		return (2 + ft_hex(fd, va_arg(va, unsigned long), HEX1));
+	}
 	if (c == 'd' || c == 'i')
 		return (ft_dec(fd, va_arg(va, int), NUM));
 	if (c == 'u')
