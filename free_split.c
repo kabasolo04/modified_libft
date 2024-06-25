@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	mtrx_free(char **mtrx)
+void	free_split(char **mtrx)
 {
 	int	i;
 
